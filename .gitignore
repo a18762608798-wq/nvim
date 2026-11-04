@@ -1,0 +1,29 @@
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+
+# Neovim 本地临时文件
+*.swp
+*.swo
+*.un~
+*~
+Session.vim
+Sessionx.vim
+
+# 本地环境变量
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# LaTeX 示例的编译产物
+/test/*.aux
+/test/*.fdb_latexmk
+/test/*.fls
+/test/*.synctex.gz
+/test/*.pdf

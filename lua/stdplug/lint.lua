@@ -1,0 +1,19 @@
+-- **linter**（静态代码检查工具）
+-- Use project-level markdownlint config.
+return {
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters = {
+        ["markdownlint-cli2"] = {
+          prepend_args = {
+            "--config",
+            vim.fn.stdpath("config") .. "/.markdownlint.yaml",
+            "--",
+          },
+        },
+      },
+    },
+  },
+}
