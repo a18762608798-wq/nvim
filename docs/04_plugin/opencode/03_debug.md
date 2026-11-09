@@ -2,7 +2,7 @@
 
 ## 现象
 
-在子目录启动 Neovim（例如 `cd ~/sync/theory && nvim .`），`opencode.nvim` 的快照功能（`<leader>od`）找不到 OpenCode 自己的 snapshot Git repo。
+在子目录启动 Neovim（例如 `cd ~/projects/users/dell/theory && nvim .`），`opencode.nvim` 的快照功能（`<leader>od`）找不到 OpenCode 自己的 snapshot Git repo。
 
 ## 根因
 
@@ -11,8 +11,8 @@
 OpenCode 1.18.31 已把两者分开：`directory` 是启动位置，`worktree` 是 Git 根。此时应为：
 
 ```text
-directory = ~/sync/theory
-worktree  = ~/sync
+directory = ~/projects/users/dell/theory
+worktree  = ~/projects/users/dell
 ```
 
 但插件仍用 `cwd`（即 `directory`）做两件事，所以全错：
@@ -61,7 +61,7 @@ if not context.worktree then
 end
 ```
 
-效果：`Space od` 仍只看当前 `theory` 目录范围（`cwd` 不变，git 命令的执行目录仍是 `cwd`），但访问 snapshot 时使用 `~/sync` 对应的正确 snapshot repo。
+效果：`Space od` 仍只看当前 `theory` 目录范围（`cwd` 不变，git 命令的执行目录仍是 `cwd`），但访问 snapshot 时使用 `~/projects/users/dell` 对应的正确 snapshot repo。
 
 ## 与参考方案的差异
 
